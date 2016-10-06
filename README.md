@@ -34,10 +34,16 @@ plink --file OnlineDummy --ld-cutoff-r2 0.2 --r2 --out LDTestX   ##Doesn't work
 ##Try with R. Must load some fucking prerequisites.
 
 module load mpc/latest
+
 module load mpfr/latest
+
 module load gmp/latest
-module load gpc/4.9.1
-module load vclib/20150313
+
+module load gcc/4.9.1
+
+module load R/latest
+
+module load VCFtools/latest
 
 plink --file mydata --r2
 
