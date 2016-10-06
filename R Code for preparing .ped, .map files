@@ -1,0 +1,28 @@
+getwd()
+setwd("C:/Users/alber/Dropbox/Queistsch Rotation 2016")
+##library(xlsx)
+
+Annots<-read.csv("str_annots.csv")
+genots<-read.xlsx("problem_mip_genotypes_081016_reform.xlsx",1,colClasses = "numeric")
+
+#make MAP file
+cms<-rep(0,nrow(Annots))
+mapfile<-cbind(Annots[,c(2,1)],cms,Annots[,3])
+mapfile$ID<-paste("STR",mapfile$ID,sep="_")
+
+
+genots<-genots[order(genots$STR_ID),]
+genots$STR_ID<-paste("STR",genots$STR_ID,sep="_")
+
+genots2<-t(genots)
+
+genots2<-data.frame(genots2)
+
+pedstart<-data.frame(matrix(0,nrow(genots2),6))
+
+names(genots2)<-genots2[1,]
+
+#Remove genotypes lacking annotations
+
+IDsNotFucked<-as.character(genots2[,1])
+keep<-genots3[1,] %in% mapfile$ID
